@@ -1,5 +1,6 @@
 from room import Room
-
+from player import Player
+from moveparser import move_parser
 # Declare all the rooms
 
 room = {
@@ -38,7 +39,18 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player(input('Pick A Name: '), input('Enter your characters description: '), room['outside'])
+playing = True
 
+while playing:
+    print(player.location.name, "\n")
+    print(player.location.description, '\n')
+    next_move = input('(type "help" for options) Enter action: ').lower()
+    move_parser(next_move)
+    
+# If the user enters "q", quit the game.
+
+   
 # Write a loop that:
 #
 # * Prints the current room name
@@ -48,4 +60,3 @@ room['treasure'].s_to = room['narrow']
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
-# If the user enters "q", quit the game.
